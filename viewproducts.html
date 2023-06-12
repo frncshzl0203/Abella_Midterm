@@ -13,13 +13,23 @@
     <title>Product Viewing</title>
   </head>
   <body>
-    <div class="navbar navbar-expand-sm bg-secondary navbar-dark">
+    <style>
+      body {
+        background-image: url("SOAPDRIED FLOWERSHOP.png");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+    </style>
+    <div class="navbar navbar-expand-sm  navbar-dark">
       <div class="navbar-header container-fluid">
-        <a class="navbar-brand" href="insertproducts.html">Soap/Dried Flowershop/View Products</a>
+        <a class="navbar-brand" href="insertproducts.html"
+          ></a
+        >
       </div>
       <div class="">
         <a
-          href="login.html"
+          href="index.html"
           class="btn btn-success"
           id="logout"
           style="white-space: nowrap"
@@ -29,7 +39,7 @@
       </div>
     </div>
     <br />
-    <h3 class="text-center">Flowershop</h3>
+    <h3 class="text-center"></h3>
     <br />
     <div class="container">
       <table class="table table-success table-striped table-bordered">
@@ -58,15 +68,23 @@
     <br />
 
     <div class="d-flex justify-content-center">
-      <a class="btn btn-success" href="insertproducts.html">Add More Flower Items</a>
+      <a class="btn btn-success" href="insertproducts.html"
+        >Add More Flower Items</a
+      >
     </div>
-
     <script type="module">
       // Filling the table
       var pcNo = 0;
       var tbody = document.getElementById("tbody1");
 
-      function AddItemToTable(FlowerItem, ProductName, Identity, ContactNumber, quanti, ModeofPayment) {
+      function AddItemToTable(
+        FlowerItem,
+        ProductName,
+        Identity,
+        ContactNumber,
+        quanti,
+        ModeofPayment
+      ) {
         let trow = document.createElement("tr");
         let td1 = document.createElement("td");
         let td2 = document.createElement("td");
@@ -105,26 +123,25 @@
             element.Info,
             element.ContactN,
             element.Quantity,
-            element.Mop,
+            element.Mop
           );
         });
       }
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
-// Your web app's Firebase configuration
-const firebaseConfig = {
-apiKey: "AIzaSyDsc1c1fLMkGN5Y3M5yUyQSIc5OueEj82M",
-authDomain: "abellaemailauth.firebaseapp.com",
-databaseURL: "https://abellaemailauth-default-rtdb.firebaseio.com",
-projectId: "abellaemailauth",
-storageBucket: "abellaemailauth.appspot.com",
-messagingSenderId: "46523071849",
-appId: "1:46523071849:web:ae0f7e17536c4fbb31d1f8"
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyDsc1c1fLMkGN5Y3M5yUyQSIc5OueEj82M",
+        authDomain: "abellaemailauth.firebaseapp.com",
+        databaseURL: "https://abellaemailauth-default-rtdb.firebaseio.com",
+        projectId: "abellaemailauth",
+        storageBucket: "abellaemailauth.appspot.com",
+        messagingSenderId: "46523071849",
+        appId: "1:46523071849:web:ae0f7e17536c4fbb31d1f8",
+      };
 
-};
+      // Initialize Firebase
 
-// Initialize Firebase
-
-const app = initializeApp(firebaseConfig);
+      const app = initializeApp(firebaseConfig);
       import {
         getDatabase,
         ref,
@@ -139,17 +156,18 @@ const app = initializeApp(firebaseConfig);
         const dbRef = ref(db, "FlowerItem");
 
         onValue(dbRef, (snapshot) => {
-          var pcs = [];
+          var Items = [];
 
           snapshot.forEach((childSnapshot) => {
-            pcs.push(childSnapshot.val());
+            Items.push(childSnapshot.val());
           });
 
-          AddAllItemsToTable(pcs);
+          AddAllItemsToTable(Items);
         });
       }
 
       window.onload = GetAllDataRealtime;
+
     </script>
   </body>
 </html>

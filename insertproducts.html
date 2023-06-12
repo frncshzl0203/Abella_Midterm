@@ -13,13 +13,23 @@
     <title>Insert Products</title>
   </head>
   <body>
-    <div class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <style>
+      body {
+        background-image: url("SOAPDRIED FLOWERSHOP.png");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+    </style>
+    <div class="navbar navbar-expand-sm navbar-dark">
       <div class="navbar-header container-fluid">
-        <a class="navbar-brand" href="viewproducts.html">View Dried/Soap Flower Products</a>
+        <a class="navbar-brand" href="viewproducts.html"
+          ></a
+        >
       </div>
       <div class="">
         <a
-          href="login.html"
+          href="index.html"
           class="btn btn-success"
           id="logout"
           style="white-space: nowrap"
@@ -29,10 +39,17 @@
       </div>
     </div>
     <br />
-    <h3 class="text-center">Soap/Dried Flowershop/ Insert Products</h3>
+    
     <br />
-    <div class="container col-sm-5 justify-content-center">
+    <section class="vh-100 gradient-custom">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card bg-dark text-white" style="border-radius: 1rem;">
+              <div class="card-body p-5 text-center">
+                <div class="mb-md-5 mt-md-4 pb-5"> 
       <form>
+        <h3 class="text-center">Insert Products</h3>
         <div class="mb-3">
           <label for="FlowerItem" class="form-label"><b>Flower:</b></label>
           <input type="text" class="form-control" id="FlowerI" />
@@ -42,37 +59,38 @@
           <input type="text" class="form-control" id="ProductName" />
         </div>
         <div class="mb-3">
-          <label for="Info" class="form-label"
-            ><b>Name of Customer:</b></label
-          >
+          <label for="Info" class="form-label"><b>Name of Customer:</b></label>
           <input type="text" class="form-control" id="Identity" />
         </div>
         <div class="mb-3">
-          <label for="ContactN" class="form-label"><b>Contact Number:</b></label>
+          <label for="ContactN" class="form-label"
+            ><b>Contact Number:</b></label
+          >
           <input type="text" class="form-control" id="ContactNumber" />
         </div>
         <div class="mb-3">
           <label for="Quanti" class="form-label"><b>Quantity:</b></label>
           <input type="text" class="form-control" id="HowMany" />
         </div>
-        <div class="mb-3">
-          <label for="Mop" class="form-label"><b>COD/Online Transaction:</b></label>
-          <input type="text" class="form-control" id="ModeofPayment" />
+          <div class="col-auto my-1">
+          <label class="mr-sm-2" for="Mop">Payment</label>
+      <select class="custom-select mr-sm-2" id="ModeofPayment">
+        <option selected>Choose your Payment</option>
+        <option value="COD">COD/Cash on Delivery</option>
+        <option value="Online">Online Transaction</option>
+      </select>
         </div>
       </form>
       <br />
       <div class="d-flex justify-content-between btn-group">
-        <button class="btn btn-success btn-outline-light" id="InsertBtn">
+        <button class="btn btn-success btn-outline-dark" id="InsertBtn">
           INSERT
         </button>
-        <button class="btn btn-success btn-outline-light" id="SelectBtn">
+        <button class="btn btn-success btn-outline-dark" id="SelectBtn">
           SELECT
         </button>
-        <button class="btn btn-success btn-outline-light" id="UpdateBtn">
+        <button class="btn btn-success btn-outline-dark" id="UpdateBtn">
           UPDATE
-        </button>
-        <button class="btn btn-success btn-outline-light" id="DeleteBtn">
-          DELETE
         </button>
       </div>
     </div>
@@ -81,7 +99,9 @@
     <br />
 
     <div class="d-flex justify-content-center">
-      <a class="btn btn-success" href="viewproducts.html">View Flower Products</a>
+      <a class="btn btn-success" href="viewproducts.html"
+        >View Flower Products</a
+      >
     </div>
 
     <br />
@@ -95,18 +115,18 @@
       // TODO: Add SDKs for Firebase products that you want to use
       // https://firebase.google.com/docs/web/setup#available-libraries
 
-     // Your web app's Firebase configuration
-    const firebaseConfig = {
-    apiKey: "AIzaSyDsc1c1fLMkGN5Y3M5yUyQSIc5OueEj82M",
-    authDomain: "abellaemailauth.firebaseapp.com",
-    databaseURL: "https://abellaemailauth-default-rtdb.firebaseio.com",
-    projectId: "abellaemailauth",
-    storageBucket: "abellaemailauth.appspot.com",
-    messagingSenderId: "46523071849",
-    appId: "1:46523071849:web:ae0f7e17536c4fbb31d1f8"
-  };
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyDsc1c1fLMkGN5Y3M5yUyQSIc5OueEj82M",
+        authDomain: "abellaemailauth.firebaseapp.com",
+        databaseURL: "https://abellaemailauth-default-rtdb.firebaseio.com",
+        projectId: "abellaemailauth",
+        storageBucket: "abellaemailauth.appspot.com",
+        messagingSenderId: "46523071849",
+        appId: "1:46523071849:web:ae0f7e17536c4fbb31d1f8",
+      };
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
 
       import {
         getDatabase,
@@ -130,7 +150,7 @@ const app = initializeApp(firebaseConfig);
       var insrtBtn = document.getElementById("InsertBtn");
       var selBtn = document.getElementById("SelectBtn");
       var updtBtn = document.getElementById("UpdateBtn");
-      var dltBtn = document.getElementById("DeleteBtn");
+
 
       //Add Datas
 
@@ -166,7 +186,7 @@ const app = initializeApp(firebaseConfig);
               quanti.value = snapshot.val().Quantity;
               ModeofPayment.value = snapshot.val().Mop;
             } else {
-              alert("No PC Found");
+              alert("No Item Found");
             }
           })
           .catch((error) => {
@@ -186,31 +206,20 @@ const app = initializeApp(firebaseConfig);
           Mop: ModeofPayment.value,
         })
           .then(() => {
-            alert("PC Info Updated Successfully!");
+            alert("Item Info Updated Successfully!");
           })
           .catch((error) => {
             alert("Unsuccessful, Error" + error);
           });
       }
 
-      // Delete Function
-
-      function DeleteData() {
-        remove(ref(db, "FlowerItem/" + FlowerI.value))
-          .then(() => {
-            alert("PC Deleted Successfully!");
-          })
-          .catch((error) => {
-            alert("Unsuccessful, Error" + error);
-          });
-      }
 
       //Assign events to buttons
 
       insrtBtn.addEventListener("click", InsertData);
       selBtn.addEventListener("click", SelectData);
       updtBtn.addEventListener("click", UpdateData);
-      dltBtn.addEventListener("click", DeleteData);
+
     </script>
   </body>
 </html>
